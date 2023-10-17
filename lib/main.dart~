@@ -1,0 +1,77 @@
+import 'package:flutter/material.dart';
+
+class AppTitle extends StatelessWidget{
+  const AppTitle({required this.title, super.key});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context){
+    return Text(
+      title,
+      style: const TextStyle(fontSize: 56, fontWeight: FontWeight.bold,),
+    );
+  }
+}
+
+class CounterApp extends StatefulWidget{
+  const CounterApp({super.key});
+
+  @override
+  State<Counter> createState() => _CounterState();
+}
+
+class _CounterState extends State<Counter> {
+  int _counter = 0;
+
+  void _increment() {
+    setState(() {
+      ++_counter;
+    });
+  }
+
+  void _decrement() {
+    setState(() {
+      --_counter;
+    });
+  }
+
+  void _reset() {
+    setState(() {
+      _counter = 0;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      _counter.toString(),
+    );
+  }
+}
+
+class Counter extends StatelessWidget{
+  const Counter({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return const Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          AppTitle(title: 'Counter',),
+        ],
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(
+    const MaterialApp(
+      home: Scaffold(
+        body: Counter(),
+      ),
+    ),
+  );
+}
